@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace Project4_2DArrays
 {
@@ -13,10 +14,10 @@ namespace Project4_2DArrays
             int x = 0;
             int y = 0;
 
-            Console.WriteLine("Enter the number of rows in thearray: ");
+            Console.Write("Enter the number of rows in the array: ");
             x = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Enter the number of columns in the array: ");
+            Console.Write("Enter the number of columns in the array: ");
             y = Convert.ToInt32(Console.ReadLine());
 
             int[,] Array2d = new int[x,y];
@@ -25,7 +26,7 @@ namespace Project4_2DArrays
             {
                 for (int j = 0; j < y; j++)
                 {
-                    Console.WriteLine("Enter the value for the array at position [" + i + "," + j + "]: ");
+                    Console.Write("Enter integer value for the array at position [" + i + "," + j + "]: ");
                     Array2d[i, j] = Convert.ToInt32(Console.ReadLine());
                 }
             }
@@ -36,11 +37,27 @@ namespace Project4_2DArrays
             {
                 for (int j = 0; j < y; j++)
                 {
-                    Console.Write(Array2d[i,j] + " ");
+                    //Console.WriteLine();
+                    int varValue = Array2d[i, j].ToString().Length;
+                    while (varValue > -1)
+                    {
+                        Console.Write("--");
+                        varValue--;
+                    }
+                    Console.WriteLine();
+                    Console.Write("| " + Array2d[i, j] + " |");
+                    Console.WriteLine();
+                    int newVarValue = Array2d[i, j].ToString().Length;
+                    while (newVarValue > -1)
+                    {
+                        Console.Write("--");
+                        newVarValue--;
+                    }
+
                 }
+
                 Console.WriteLine();
             }
-
         }
     }
 }
