@@ -40,22 +40,9 @@ namespace Project4_2DArrays
                     asciiValue = random.Next(65, 90);
                     char character = (char)asciiValue;
                     Array2d[i, j] = character;
-                    Console.WriteLine(Array2d[i, j] + " ");
+                    //Console.WriteLine(Array2d[i, j] + " ");
                 }
             }
-
-            int maxValue = 0;
-            foreach (int value in Array2d)
-            {
-                if (value > maxValue)
-                {
-                    maxValue = value;
-                }
-            }
-
-            int borderWidth = maxValue * xAxis;
-
-            //Console.WriteLine("Max value in the array is: " + maxValue);
 
             while (true)
             {
@@ -71,7 +58,6 @@ namespace Project4_2DArrays
                 //Option 1: Array displayed in a grid with borders
                 if (choice == 1)
                 {
-                    Console.Write("+");
                     int yCounter = 0;
 
                     while (yCounter < yAxis)
@@ -90,7 +76,7 @@ namespace Project4_2DArrays
                             counter1++;
                         }
                         Console.WriteLine();
-                        //
+
                         int counter2 = 0;
                         while (counter2 < xAxis)
                         {
@@ -98,7 +84,7 @@ namespace Project4_2DArrays
                             counter2++;
                         }
                         Console.WriteLine();
-                        //
+
                         int counter3 = 0;
                         while (counter3 < xAxis)
                         {
@@ -121,41 +107,28 @@ namespace Project4_2DArrays
                 {
 
                     //Option 2: Array displayed in reverse order with borders
-
+                    Console.Write("+");
+                    for (int i = 0; i < yAxis; i++)
+                    {
+                        Console.Write("---");
+                    }
+                    Console.Write("+");
+                    Console.WriteLine();
                     for (int i = xAxis - 1; i >= 0; i--)
                     {
                         for (int j = yAxis - 1; j >= 0; j--)
                         {
-                            Console.Write("+");
-                            int varValue = Array2d[i, j].ToString().Length;
-                            while (varValue > -1)
-                            {
-                                Console.Write("-");
-                                varValue--;
-                            }
-                            Console.Write("+ ");
-                        }
-                        Console.WriteLine();
-                        //
-                        for (int j = yAxis - 1; j >= 0; j--)
-                        {
-                            Console.Write("| " + Array2d[i, j] + "| ");
-                        }
-                        Console.WriteLine();
-                        //
-                        for (int j = yAxis - 1; j >= 0; j--)
-                        {
-                            Console.Write("+");
-                            int varValue = Array2d[i, j].ToString().Length;
-                            while (varValue > -1)
-                            {
-                                Console.Write("-");
-                                varValue--;
-                            }
-                            Console.Write("+ ");
+                            Console.Write("|" + Array2d[i, j] + "|");
                         }
                         Console.WriteLine();
                     }
+                    Console.Write("+");
+                    for (int i = 0; i < yAxis; i++)
+                    {
+                        Console.Write("---");
+                    }
+                    Console.Write("+");
+                    Console.WriteLine();
                 }
                 else if (choice == 3)
                 {
@@ -176,16 +149,9 @@ namespace Project4_2DArrays
                     {
                         for (int j = 0; j < yAxis; j++)
                         {
-                            if (Array2d[i, j] == maxValue)
-                            {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write(Array2d[i, j] + " ");
-                                Console.ResetColor();
-                            }
-                            else
-                            {
-                                Console.Write(Array2d[i, j] + " ");
-                            }
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(Array2d[i, j] + " ");
+                            Console.ResetColor();
                         }
                         Console.WriteLine();
                     }
