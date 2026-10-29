@@ -28,14 +28,19 @@ namespace Project4_2DArrays
                 yAxis = Convert.ToInt32(Console.ReadLine());
             }
 
-            int[,] Array2d = new int[xAxis, yAxis];
+            char[,] Array2d = new char[xAxis, yAxis];
+
+            int asciiValue = 0;
+            Random random = new Random();
 
             for (int i = 0; i < xAxis; i++)
             {
                 for (int j = 0; j < yAxis; j++)
                 {
-                    Console.Write("Enter integer value for the array at position [" + i + "," + j + "]: ");
-                    Array2d[i, j] = Convert.ToInt32(Console.ReadLine());
+                    asciiValue = random.Next(65, 90);
+                    char character = (char)asciiValue;
+                    Array2d[i, j] = character;
+                    Console.WriteLine(Array2d[i, j] + " ");
                 }
             }
 
@@ -47,6 +52,8 @@ namespace Project4_2DArrays
                     maxValue = value;
                 }
             }
+
+            int borderWidth = maxValue * xAxis;
 
             //Console.WriteLine("Max value in the array is: " + maxValue);
 
@@ -64,6 +71,7 @@ namespace Project4_2DArrays
                 //Option 1: Array displayed in a grid with borders
                 if (choice == 1)
                 {
+                    Console.Write("+");
                     int yCounter = 0;
 
                     while (yCounter < yAxis)
